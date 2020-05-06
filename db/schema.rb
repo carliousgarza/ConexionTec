@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_06_001823) do
+ActiveRecord::Schema.define(version: 2020_05_06_003005) do
 
   create_table "abstracts", force: :cascade do |t|
     t.text "problem"
@@ -27,6 +27,18 @@ ActiveRecord::Schema.define(version: 2020_05_06_001823) do
   create_table "administrators", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "collaborators", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.string "email"
+    t.string "major"
+    t.string "student_code"
+    t.integer "project_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["project_id"], name: "index_collaborators_on_project_id"
   end
 
   create_table "committee_evaluations", force: :cascade do |t|
@@ -63,6 +75,16 @@ ActiveRecord::Schema.define(version: 2020_05_06_001823) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "judge_evaluations", force: :cascade do |t|
+    t.integer "judge_id", null: false
+    t.integer "project_id", null: false
+    t.integer "score"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["judge_id"], name: "index_judge_evaluations_on_judge_id"
+    t.index ["project_id"], name: "index_judge_evaluations_on_project_id"
+  end
+
   create_table "judges", force: :cascade do |t|
     t.string "company"
     t.string "department"
@@ -97,6 +119,15 @@ ActiveRecord::Schema.define(version: 2020_05_06_001823) do
     t.index ["project_id"], name: "index_project_details_on_project_id"
   end
 
+  create_table "project_event_details", force: :cascade do |t|
+    t.integer "stand"
+    t.integer "final_score"
+    t.integer "project_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["project_id"], name: "index_project_event_details_on_project_id"
+  end
+
   create_table "projects", force: :cascade do |t|
     t.string "status"
     t.integer "student_id", null: false
@@ -118,6 +149,16 @@ ActiveRecord::Schema.define(version: 2020_05_06_001823) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["edition_id"], name: "index_questions_on_edition_id"
+  end
+
+  create_table "social_impacts", force: :cascade do |t|
+    t.text "problem"
+    t.text "empathy"
+    t.text "responsibility"
+    t.integer "project_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["project_id"], name: "index_social_impacts_on_project_id"
   end
 
   create_table "staff_members", force: :cascade do |t|
@@ -152,11 +193,16 @@ ActiveRecord::Schema.define(version: 2020_05_06_001823) do
   end
 
   add_foreign_key "abstracts", "projects"
+  add_foreign_key "collaborators", "projects"
   add_foreign_key "committee_evaluations", "projects"
+  add_foreign_key "judge_evaluations", "judges"
+  add_foreign_key "judge_evaluations", "projects"
   add_foreign_key "project_details", "projects"
+  add_foreign_key "project_event_details", "projects"
   add_foreign_key "projects", "editions"
   add_foreign_key "projects", "institutions"
   add_foreign_key "projects", "professors"
   add_foreign_key "projects", "students"
   add_foreign_key "questions", "editions"
+  add_foreign_key "social_impacts", "projects"
 end

@@ -1,0 +1,37 @@
+<%= form_with(model: social_impact, local: true) do |form| %>
+  <% if social_impact.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(social_impact.errors.count, "error") %> prohibited this social_impact from being saved:</h2>
+
+      <ul>
+        <% social_impact.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :problem %>
+    <%= form.text_area :problem %>
+  </div>
+
+  <div class="field">
+    <%= form.label :empathy %>
+    <%= form.text_area :empathy %>
+  </div>
+
+  <div class="field">
+    <%= form.label :responsibility %>
+    <%= form.text_area :responsibility %>
+  </div>
+
+  <div class="field">
+    <%= form.label :project_id %>
+    <%= form.text_field :project_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
