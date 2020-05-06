@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :institutions
+  resources :questions
+  resources :editions
   resources :staff_members
   resources :committee_members
   resources :operatives

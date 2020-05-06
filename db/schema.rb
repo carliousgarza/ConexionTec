@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_05_043845) do
+ActiveRecord::Schema.define(version: 2020_05_05_235744) do
 
   create_table "administrators", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
@@ -18,6 +18,21 @@ ActiveRecord::Schema.define(version: 2020_05_05_043845) do
   end
 
   create_table "committee_members", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "editions", force: :cascade do |t|
+    t.string "name"
+    t.date "start_date"
+    t.date "end_date"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "institutions", force: :cascade do |t|
+    t.string "name"
+    t.string "city"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -43,6 +58,15 @@ ActiveRecord::Schema.define(version: 2020_05_05_043845) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "questions", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.integer "edition_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["edition_id"], name: "index_questions_on_edition_id"
+  end
+
   create_table "staff_members", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -66,10 +90,13 @@ ActiveRecord::Schema.define(version: 2020_05_05_043845) do
     t.integer "status"
     t.string "first_name"
     t.string "last_name"
-    t.bigint "userable_id"
+    t.integer "userable_id"
     t.string "userable_type"
+    t.integer "edition_id", null: false
+    t.integer "institution_id", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "questions", "editions"
 end
