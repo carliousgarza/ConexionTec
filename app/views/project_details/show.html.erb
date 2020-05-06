@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @project_detail.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @project_detail.description %>
+</p>
+
+<p>
+  <strong>Video url:</strong>
+  <%= @project_detail.video_url %>
+</p>
+
+<p>
+  <strong>Semestre i:</strong>
+  <%= @project_detail.semestre_i %>
+</p>
+
+<p>
+  <strong>Social impact:</strong>
+  <%= @project_detail.social_impact %>
+</p>
+
+<p>
+  <strong>Client type:</strong>
+  <%= @project_detail.client_type %>
+</p>
+
+<p>
+  <strong>Project:</strong>
+  <%= @project_detail.project_id %>
+</p>
+
+<%= link_to 'Edit', edit_project_detail_path(@project_detail) %> |
+<%= link_to 'Back', project_details_path %>

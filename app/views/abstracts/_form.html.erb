@@ -1,0 +1,47 @@
+<%= form_with(model: abstract, local: true) do |form| %>
+  <% if abstract.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(abstract.errors.count, "error") %> prohibited this abstract from being saved:</h2>
+
+      <ul>
+        <% abstract.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :problem %>
+    <%= form.text_area :problem %>
+  </div>
+
+  <div class="field">
+    <%= form.label :methodology %>
+    <%= form.text_area :methodology %>
+  </div>
+
+  <div class="field">
+    <%= form.label :feasibility %>
+    <%= form.text_area :feasibility %>
+  </div>
+
+  <div class="field">
+    <%= form.label :results %>
+    <%= form.text_area :results %>
+  </div>
+
+  <div class="field">
+    <%= form.label :impact %>
+    <%= form.text_area :impact %>
+  </div>
+
+  <div class="field">
+    <%= form.label :project_id %>
+    <%= form.text_field :project_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
