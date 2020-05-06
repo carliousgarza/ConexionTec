@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :judge_evaluations
+  resources :project_event_details
+  resources :social_impacts
+  resources :collaborators
   resources :committee_evaluations
   resources :abstracts
   resources :project_details

@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Judge Evaluations</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Judge</th>
+      <th>Project</th>
+      <th>Score</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @judge_evaluations.each do |judge_evaluation| %>
+      <tr>
+        <td><%= judge_evaluation.judge_id %></td>
+        <td><%= judge_evaluation.project_id %></td>
+        <td><%= judge_evaluation.score %></td>
+        <td><%= link_to 'Show', judge_evaluation %></td>
+        <td><%= link_to 'Edit', edit_judge_evaluation_path(judge_evaluation) %></td>
+        <td><%= link_to 'Destroy', judge_evaluation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Judge Evaluation', new_judge_evaluation_path %>
