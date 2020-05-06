@@ -5,4 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
  
   belongs_to :userable, polymorphic: true
+  belongs_to :institution
+  belongs_to :edition
+
 end
