@@ -1,0 +1,57 @@
+<%= form_with(model: committee_evaluation, local: true) do |form| %>
+  <% if committee_evaluation.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(committee_evaluation.errors.count, "error") %> prohibited this committee_evaluation from being saved:</h2>
+
+      <ul>
+        <% committee_evaluation.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.number_field :description %>
+  </div>
+
+  <div class="field">
+    <%= form.label :problem %>
+    <%= form.number_field :problem %>
+  </div>
+
+  <div class="field">
+    <%= form.label :methodology %>
+    <%= form.number_field :methodology %>
+  </div>
+
+  <div class="field">
+    <%= form.label :feasibility %>
+    <%= form.number_field :feasibility %>
+  </div>
+
+  <div class="field">
+    <%= form.label :results %>
+    <%= form.number_field :results %>
+  </div>
+
+  <div class="field">
+    <%= form.label :impact %>
+    <%= form.number_field :impact %>
+  </div>
+
+  <div class="field">
+    <%= form.label :score %>
+    <%= form.number_field :score %>
+  </div>
+
+  <div class="field">
+    <%= form.label :project_id %>
+    <%= form.text_field :project_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
