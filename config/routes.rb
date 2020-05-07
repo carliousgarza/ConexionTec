@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  # Root
+  root 'projects#index'
+  
   # Devise
   devise_for :users, controllers: {
     registrations: 'users/registrations',
