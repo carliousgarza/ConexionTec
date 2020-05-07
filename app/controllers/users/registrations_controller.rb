@@ -10,9 +10,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+  def create
+    super do
+      userable_type = resource.userable_type
+      userable = create_userable(userable_type)
+      resource.userable_id = userable.id
+      resource.save
+    end
+  end
 
   # GET /resource/edit
   # def edit
@@ -59,4 +64,33 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
+
+  def create_userable(userable_type)
+    case userable_type
+    when "Student"
+      student = Student.new
+      student.save
+      return student
+    when "Professor"
+      professor = Professor.new
+      professor.save
+      return professor
+    when "CommitteeMember"
+      committee_member = CommitteeMember.new
+      committee_member.save
+      return committee_member
+    when "Operative"
+      operative = Operative.new
+      operative.save
+      return operative
+    when "Judge"
+      judge = Judge.new
+      judge.save
+      return judge
+    when "Administrator"
+      administrator = Administrator.new
+      administrator.save
+      return administrator
+    end
+  end
 end
