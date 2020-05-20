@@ -7,18 +7,28 @@
         <%= render "devise/shared/error_messages", resource: resource %>
 
         <div class="field">
-          <%= f.label :userable_type,"User Type" %><br />
+          <%= f.label :userable_type, "User Type" %><br />
           <%= f.select :userable_type, userable_type_options(), {}, :class => "form-control"  %>
         </div>
 
         <div class="field">
-          <%= f.label :institution_id,"Institution" %><br />
+          <%= f.label :institution_id, "Institution" %><br />
           <%= f.select :institution_id, institution_options(), {}, :class => "form-control"  %>
         </div>
 
         <div class="field">
-          <%= f.label :edition_id,"Edition" %><br />
+          <%= f.label :edition_id, "Edition" %><br />
           <%= f.select :edition_id, edition_options(), {}, :class => "form-control"  %>
+        </div>
+
+        <div class="field">
+          <%= f.label :first_name, "First name" %><br />
+          <%= f.text_field :first_name, :class => "form-control"  %>
+        </div>
+
+        <div class="field">
+          <%= f.label :last_name, "Last name" %><br />
+          <%= f.text_field :last_name, :class => "form-control"  %>
         </div>
 
         <div class="field">
