@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :time_limits
   # Root
   root 'projects#index'
   
