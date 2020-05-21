@@ -49,6 +49,18 @@
           <%= f.password_field :password_confirmation, autocomplete: "new-password", :class => "form-control"  %>
         </div>
 
+        <div id='student-registration'>
+          <%= render "devise/registrations/userable/student" %>
+        </div>
+
+        <div id='professor-registration'>
+          <%= render "devise/registrations/userable/professor" %>
+        </div>
+
+        <div id='judge-registration'>
+          <%= render "devise/registrations/userable/judge" %>
+        </div>
+
         <div class="actions">
           <div class="row">
             <div class="col-md-3">
