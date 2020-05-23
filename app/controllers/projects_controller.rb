@@ -15,6 +15,7 @@ class ProjectsController < ApplicationController
   # GET /projects/new
   def new
     @project = Project.new
+    @project.build_project_detail
   end
 
   # GET /projects/1/edit
@@ -69,6 +70,6 @@ class ProjectsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def project_params
-      params.require(:project).permit(:status, :student_id, :professor_id, :institution_id, :edition_id)
+      params.require(:project).permit(:status, :student_id, :professor_id, :institution_id, :edition_id, :project_detail_attributes => project_detail_keys())
     end
 end

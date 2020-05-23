@@ -11,6 +11,10 @@
     </div>
   <% end %>
 
+  <%= form.fields_for :project_detail do |project_detail| %>
+    <%= render "project_details/form_shared", form: project_detail %>
+  <% end %>
+
   <div class="field">
     <%= form.label :status %>
     <%= form.text_field :status %>

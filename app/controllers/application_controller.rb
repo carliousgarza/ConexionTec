@@ -5,4 +5,8 @@ class ApplicationController < ActionController::Base
   def user_keys()
     return [:status, :first_name, :last_name, :userable_id, :userable_type, :edition_id, :institution_id]
   end
+
+  def project_detail_keys()
+    return [:name, :description, :video_url, :semestre_i, :social_impact, :client_type, :project_id]
+  end
 end
