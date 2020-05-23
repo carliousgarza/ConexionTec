@@ -1,4 +1,7 @@
 class Project < ApplicationRecord
+
+  enum status: [:registered, :approved, :disapproved, :evaluated, :accepted, :rejected, :declined, :missed]
+
   belongs_to :student
   belongs_to :professor
   belongs_to :institution

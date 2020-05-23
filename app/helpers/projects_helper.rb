@@ -1,4 +1,10 @@
 module ProjectsHelper
+  def project_status_options()
+    [['Registrado', 'registered'], ['Aprobado', 'approved'], ['No aprobado', 'disapproved'],
+     ['Evaluado', 'evaluated'], ['Aceptado', 'accepted'], ['Rechazado', 'rejected'],
+     ['Declinado', 'declined'], ['Faltó', 'missed']]
+  end
+
   def project_description(project)
     project_detail = project.project_detail
     project_detail.description

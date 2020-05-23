@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_06_003005) do
+ActiveRecord::Schema.define(version: 2020_05_23_234012) do
 
   create_table "abstracts", force: :cascade do |t|
     t.text "problem"
@@ -129,7 +129,7 @@ ActiveRecord::Schema.define(version: 2020_05_06_003005) do
   end
 
   create_table "projects", force: :cascade do |t|
-    t.string "status"
+    t.integer "status"
     t.integer "student_id", null: false
     t.integer "professor_id", null: false
     t.integer "institution_id", null: false
