@@ -8,7 +8,9 @@
 
         <div class="field">
           <%= f.label :userable_type, "User Type" %><br />
-          <%= f.select :userable_type, userable_type_options(), {}, :class => "form-control"  %>
+          <%= f.select :userable_type, userable_type_options(), {}, { :class => "form-control",
+                                                                      :id => "userable-type-registration",
+                                                                      :onchange => "manageUserableTypeRegistration()" }  %>
         </div>
 
         <div class="field">
@@ -49,16 +51,16 @@
           <%= f.password_field :password_confirmation, autocomplete: "new-password", :class => "form-control"  %>
         </div>
 
-        <div id='student-registration'>
-          <%= render "devise/registrations/userable/student" %>
+        <div id='judge-registration'>
+          <%= render "devise/registrations/userable/judge" %>
         </div>
 
         <div id='professor-registration'>
           <%= render "devise/registrations/userable/professor" %>
         </div>
 
-        <div id='judge-registration'>
-          <%= render "devise/registrations/userable/judge" %>
+        <div id='student-registration'>
+          <%= render "devise/registrations/userable/student" %>
         </div>
 
         <div class="actions">

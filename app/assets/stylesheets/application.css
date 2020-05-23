@@ -19,29 +19,29 @@
  */
 
 .banner-sec {
-    background:url(https://static.pexels.com/photos/33972/pexels-photo.jpg)  no-repeat left bottom; 
-    background-size:cover; 
-    min-height:500px; 
-    border-radius: 0 10px 10px 0; 
+    background:url(https://static.pexels.com/photos/33972/pexels-photo.jpg)  no-repeat left bottom;
+    background-size:cover;
+    min-height:500px;
+    border-radius: 0 10px 10px 0;
     padding:0;
 }
 .banner-text {
-    width:70%; 
-    position:absolute; 
-    bottom:40px; 
+    width:70%;
+    position:absolute;
+    bottom:40px;
     padding-left:20px;
 }
 .banner-text h2 {
-    color:#fff; 
+    color:#fff;
     font-weight:600;
 }
 .banner-text h2:after {
-    content:" "; 
-    width:200px; 
-    height:5px; 
+    content:" ";
+    width:200px;
+    height:5px;
     background:#FFF;
-    display:block; 
-    margin-top:10px; 
+    display:block;
+    margin-top:10px;
     border-radius:3px;
 }
 .banner-text p {
@@ -55,8 +55,8 @@
     height: 100vh;
 }
 .container {
-    background:#fff; 
-    border-radius: 10px; 
+    background:#fff;
+    border-radius: 10px;
     box-shadow:15px 20px 0px rgba(0,0,0,0.1);
 }
 .carousel-inner {
@@ -66,9 +66,9 @@
     margin-top: 20px;
 }
 .login-sec h2 {
-    margin-bottom:30px; 
-    font-weight:800; 
-    font-size:30px; 
+    margin-bottom:30px;
+    font-weight:800;
+    font-size:30px;
     color: rgba(227,24, 124, 0.8);
 }
 .login-sec-logo {
@@ -76,4 +76,15 @@
     height:40px;
     margin-bottom: 20px;
     margin-left: 75px;
+}
+
+/* Registration */
+#judge-registration {
+  display: none;
+}
+#professor-registration {
+  display: none;
+}
+#student-registration {
+  display: block;
 }
