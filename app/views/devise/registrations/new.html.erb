@@ -1,27 +1,9 @@
 <div class="container">
-  <div class="row">
-    <div class="col-md-4 login-sec">
-      <img class="login-sec-logo" src="<%= asset_path( 'logo.jpg' ) %>" >
-      <h2>Sign Up</h2>
-      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-        <%= render "devise/shared/error_messages", resource: resource %>
-
-        <div class="field">
-          <%= f.label :userable_type, "User Type" %><br />
-          <%= f.select :userable_type, userable_type_options(), {}, { :class => "form-control",
-                                                                      :id => "userable-type-registration",
-                                                                      :onchange => "manageUserableTypeRegistration()" }  %>
-        </div>
-
-        <div class="field">
-          <%= f.label :institution_id, "Institution" %><br />
-          <%= f.select :institution_id, institution_options(), {}, :class => "form-control"  %>
-        </div>
-
-        <div class="field">
-          <%= f.label :edition_id, "Edition" %><br />
-          <%= f.select :edition_id, edition_options(), {}, :class => "form-control"  %>
-        </div>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <div class="row">
+      <div class="col-md-4 login-sec">
+        <img class="login-sec-logo" src="<%= asset_path( 'logo.jpg' ) %>" >
+        <h2>Sign Up</h2>
 
         <div class="field">
           <%= f.label :first_name, "First name" %><br />
@@ -51,6 +33,31 @@
           <%= f.password_field :password_confirmation, autocomplete: "new-password", :class => "form-control"  %>
         </div>
 
+        <div class="actions">
+          <%= f.submit "Sign up", :class => "btn btn-light"%>
+        </div>
+        <%= render "devise/shared/links" %>
+      </div>
+
+      <div class="col-md-8 login-sec-userable">
+        <%= render "devise/shared/error_messages", resource: resource %>
+        <div class="field">
+          <%= f.label :userable_type, "User Type" %><br />
+          <%= f.select :userable_type, userable_type_options(), {}, { :class => "form-control",
+                                                                      :id => "userable-type-registration",
+                                                                      :onchange => "manageUserableTypeRegistration()" }  %>
+        </div>
+
+        <div class="field">
+          <%= f.label :institution_id, "Institution" %><br />
+          <%= f.select :institution_id, institution_options(), {}, :class => "form-control"  %>
+        </div>
+
+        <div class="field">
+          <%= f.label :edition_id, "Edition" %><br />
+          <%= f.select :edition_id, edition_options(), {}, :class => "form-control"  %>
+        </div>
+
         <div id='judge-registration'>
           <%= render "devise/registrations/userable/judge" %>
         </div>
@@ -62,23 +69,7 @@
         <div id='student-registration'>
           <%= render "devise/registrations/userable/student" %>
         </div>
-
-        <div class="actions">
-          <div class="row">
-            <div class="col-md-3">
-              <%= f.submit "Sign up", :class => "btn btn-light"%>
-            </div>
-            <div class="col-md-4">
-              <%= link_to "Log in", new_session_path(resource_name), :class => "btn btn-light" %>
-            </div>
-          </div>
-        </div>
-      <% end %>
-      <%= render "devise/shared/links" %>
-
+      </div>
     </div>
-    <div class="col-md-8 banner-sec">
-      <%= render 'devise/shared/carousel' %>
-    </div>
-  </div>
+  <% end %>
 </div>
