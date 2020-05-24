@@ -16,6 +16,13 @@
     <%= render "project_details/form_shared", form: project_detail %>
   <% end %>
 
+  <div id='social-impact-form'>
+    <h1>Impacto Social</h1>
+    <%= form.fields_for :social_impact do |social_impact| %>
+      <%= render "social_impacts/form_shared", form: social_impact %>
+    <% end %>
+  </div>
+
   <h1>Datos del profesor coordinador</h1>
   <div class="form-group col-sm-13 text-left">
     <%= form.label :professor_id, "Nombre", :class => "form-label" %>

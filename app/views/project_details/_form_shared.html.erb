@@ -38,7 +38,9 @@
   </div>
   <div class="col-sm-6">
     <%= form.label :social_impact, "Impacto social", :class => "form-label" %>
-    <%= form.select :social_impact, boolean_options(), {}, :class => "form-control" %>
+    <%= form.select :social_impact, boolean_options(), {}, { :class => "form-control",
+                                                             :id => "social-impact-project-detail",
+                                                             :onchange => "manageSocialImpactForm()" } %>
   </div>
 </div>
 

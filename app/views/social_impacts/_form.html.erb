@@ -11,20 +11,7 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :problem %>
-    <%= form.text_area :problem %>
-  </div>
-
-  <div class="field">
-    <%= form.label :empathy %>
-    <%= form.text_area :empathy %>
-  </div>
-
-  <div class="field">
-    <%= form.label :responsibility %>
-    <%= form.text_area :responsibility %>
-  </div>
+  <%= render "social_impacts/form_shared", form: form %>
 
   <div class="field">
     <%= form.label :project_id %>
