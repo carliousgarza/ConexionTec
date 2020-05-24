@@ -26,6 +26,10 @@
     <%= form.date_select :end_date %>
   </div>
 
+  <%= form.fields_for :time_limit do |time_limit| %>
+    <%= render "time_limits/form_shared", form: time_limit %>
+  <% end %>
+
   <div class="actions">
     <%= form.submit %>
   </div>
