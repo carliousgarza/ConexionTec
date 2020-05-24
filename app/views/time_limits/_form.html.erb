@@ -11,20 +11,7 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :phase_name %>
-    <%= form.text_area :phase_name %>
-  </div>
-
-  <div class="field">
-    <%= form.label :start_date %>
-    <%= form.date_select :start_date %>
-  </div>
-
-  <div class="field">
-    <%= form.label :end_date %>
-    <%= form.date_select :end_date %>
-  </div>
+  <%= render "time_limits/form_shared", form: form %>
 
   <div class="field">
     <%= form.label :edition_id %>
