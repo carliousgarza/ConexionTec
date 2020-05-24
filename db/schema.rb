@@ -10,7 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_06_003005) do
+
+ActiveRecord::Schema.define(version: 2020_05_23_235458) do
 
   create_table "abstracts", force: :cascade do |t|
     t.text "problem"
@@ -116,6 +117,9 @@ ActiveRecord::Schema.define(version: 2020_05_06_003005) do
     t.integer "project_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "category"
+    t.string "area"
+    t.string "type_of"
     t.index ["project_id"], name: "index_project_details_on_project_id"
   end
 
@@ -129,7 +133,7 @@ ActiveRecord::Schema.define(version: 2020_05_06_003005) do
   end
 
   create_table "projects", force: :cascade do |t|
-    t.string "status"
+    t.integer "status"
     t.integer "student_id", null: false
     t.integer "professor_id", null: false
     t.integer "institution_id", null: false
@@ -173,6 +177,16 @@ ActiveRecord::Schema.define(version: 2020_05_06_003005) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "time_limits", force: :cascade do |t|
+    t.text "phase_name"
+    t.date "start_date"
+    t.date "end_date"
+    t.integer "edition_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["edition_id"], name: "index_time_limits_on_edition_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -205,4 +219,5 @@ ActiveRecord::Schema.define(version: 2020_05_06_003005) do
   add_foreign_key "projects", "students"
   add_foreign_key "questions", "editions"
   add_foreign_key "social_impacts", "projects"
+  add_foreign_key "time_limits", "editions"
 end

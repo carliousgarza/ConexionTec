@@ -68,11 +68,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def create_userable(userable_type)
     case userable_type
     when "Student"
-      student = Student.new
+      major = params[:major]
+      student_code = params[:student_code]
+      student = Student.new(major: major, student_code: student_code)
       student.save
       return student
     when "Professor"
-      professor = Professor.new
+      department = params[:professor_department]
+      professor = Professor.new(department: department)
       professor.save
       return professor
     when "CommitteeMember"
@@ -84,7 +87,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
       operative.save
       return operative
     when "Judge"
-      judge = Judge.new
+      company = params[:company]
+      department = params[:judge_department]
+      contact_name = params[:contact_name]
+      contact_email = params[:contact_email]
+      has_tablet = params[:has_tablet]
+      judge = Judge.new(company: company, department: department, contact_name: contact_name, contact_email: contact_email, has_tablet: has_tablet)
       judge.save
       return judge
     when "Administrator"
