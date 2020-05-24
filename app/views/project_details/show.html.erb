@@ -35,5 +35,20 @@
   <%= @project_detail.project_id %>
 </p>
 
+<p>
+  <strong>Category:</strong>
+  <%= @project_detail.category %>
+</p>
+
+<p>
+  <strong>Area:</strong>
+  <%= @project_detail.area %>
+</p>
+
+<p>
+  <strong>Type of:</strong>
+  <%= @project_detail.type_of %>
+</p>
+
 <%= link_to 'Edit', edit_project_detail_path(@project_detail) %> |
 <%= link_to 'Back', project_details_path %>
