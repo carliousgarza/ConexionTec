@@ -70,6 +70,6 @@ class EditionsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def edition_params
-      params.require(:edition).permit(:name, :start_date, :end_date, :time_limit_attributes => time_limit_keys())
+      params.require(:edition).permit(:name, :start_date, :end_date, :time_limit_attributes => time_limit_params())
     end
 end
