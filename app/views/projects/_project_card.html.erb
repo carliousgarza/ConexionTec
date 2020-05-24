@@ -38,7 +38,6 @@
       <strong>Estudiante:</strong>
       <%= display_project_student_info(project) %>
     </p>
-    <a href="#" class="btn btn-light">Ver abstract</a>
-    <a href="#" class="btn btn-light">Acciones</a>
+    <td><%= link_to 'Editar', edit_project_path(project), :class => "btn btn-light" %></td>
   </div>
 </div><br />
