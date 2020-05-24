@@ -11,35 +11,7 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
-
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description %>
-  </div>
-
-  <div class="field">
-    <%= form.label :video_url %>
-    <%= form.text_area :video_url %>
-  </div>
-
-  <div class="field">
-    <%= form.label :semestre_i %>
-    <%= form.check_box :semestre_i %>
-  </div>
-
-  <div class="field">
-    <%= form.label :social_impact %>
-    <%= form.check_box :social_impact %>
-  </div>
-
-  <div class="field">
-    <%= form.label :client_type %>
-    <%= form.text_field :client_type %>
-  </div>
+  <%= render "project_details/form_shared", form: form %>
 
   <div class="field">
     <%= form.label :project_id %>

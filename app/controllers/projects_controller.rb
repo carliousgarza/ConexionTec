@@ -15,6 +15,9 @@ class ProjectsController < ApplicationController
   # GET /projects/new
   def new
     @project = Project.new
+    @project.build_project_detail
+    @project.build_social_impact
+    @project.build_abstract
   end
 
   # GET /projects/1/edit
@@ -25,7 +28,9 @@ class ProjectsController < ApplicationController
   # POST /projects.json
   def create
     @project = Project.new(project_params)
-
+    @project.student_id = current_user.id
+    @project.edition_id = current_user.edition_id
+    @project.institution_id = current_user.institution_id
     respond_to do |format|
       if @project.save
         format.html { redirect_to @project, notice: 'Project was successfully created.' }
@@ -69,6 +74,24 @@ class ProjectsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def project_params
-      params.require(:project).permit(:status, :student_id, :professor_id, :institution_id, :edition_id)
+      params.require(:project).permit(:status, :student_id, :professor_id, :institution_id, :edition_id, :project_detail_attributes => project_detail_params(), :social_impact_attributes => social_impact_params(), :abstract_attributes => abstract_params())
+    end
+
+    def project_detail_params
+      params = project_detail_keys()
+      params << :id
+      return params
+    end
+
+    def social_impact_params
+      params = social_impact_keys()
+      params << :id
+      return params
+    end
+
+    def abstract_params
+      params = abstract_keys()
+      params << :id
+      return params
     end
 end
