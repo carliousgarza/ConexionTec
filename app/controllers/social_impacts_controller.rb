@@ -69,6 +69,6 @@ class SocialImpactsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def social_impact_params
-      params.require(:social_impact).permit(:problem, :empathy, :responsibility, :project_id)
+      params.require(:social_impact).permit(social_impact_keys())
     end
 end

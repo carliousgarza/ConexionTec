@@ -9,4 +9,16 @@ class ApplicationController < ActionController::Base
   def time_limit_keys()
     return [:phase_name, :start_date, :end_date, :edition_id]
   end
+  
+  def project_detail_keys()
+    return [:name, :description, :video_url, :semestre_i, :social_impact, :client_type, :project_id, :category, :area, :type_of]
+  end
+
+  def social_impact_keys()
+    return [:problem, :empathy, :responsibility, :project_id]
+  end
+
+  def abstract_keys()
+    return [:problem, :methodology, :feasibility, :results, :impact, :project_id]
+  end
 end
