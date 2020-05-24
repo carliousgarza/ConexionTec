@@ -69,6 +69,6 @@ class TimeLimitsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def time_limit_params
-      params.require(:time_limit).permit(:phase_name, :start_date, :end_date, :edition_id)
+      params.require(:time_limit).permit(time_limit_keys())
     end
 end

@@ -15,6 +15,7 @@ class EditionsController < ApplicationController
   # GET /editions/new
   def new
     @edition = Edition.new
+    @edition.time_limits.build
   end
 
   # GET /editions/1/edit
@@ -69,6 +70,6 @@ class EditionsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def edition_params
-      params.require(:edition).permit(:name, :start_date, :end_date)
+      params.require(:edition).permit(:name, :start_date, :end_date, :time_limit_attributes => time_limit_keys())
     end
 end
