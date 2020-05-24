@@ -13,4 +13,8 @@ class ApplicationController < ActionController::Base
   def social_impact_keys()
     return [:problem, :empathy, :responsibility, :project_id]
   end
+
+  def abstract_keys()
+    return [:problem, :methodology, :feasibility, :results, :impact, :project_id]
+  end
 end

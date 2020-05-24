@@ -7,6 +7,7 @@ class Project < ApplicationRecord
   belongs_to :institution
   belongs_to :edition
   has_one :abstract
+  accepts_nested_attributes_for :abstract
   has_one :committee_evaluation
   has_one :project_detail
   accepts_nested_attributes_for :project_detail
