@@ -65,6 +65,11 @@ module ProjectsHelper
     project_stand.present? ? project_stand : "Pendiente"
   end
 
+  def display_project_status(project)
+    project_status = project.status
+    project_status_options().find { |key, value| value == project_status }.first
+  end
+
   def display_project_student_info(project)
     project_student = project_student(project)
     project_student_email = project_student_email(project)

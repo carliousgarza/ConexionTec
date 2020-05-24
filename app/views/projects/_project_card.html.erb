@@ -7,20 +7,24 @@
       <div class="col-md-3">
         <strong>Categoría:</strong>
       </div>
-      <div class="col-md-3">
-        <strong>Calificación:</strong>
-        <%= display_project_score(project) %>
-      </div>
-      <div class="col-md-3">
-        <strong>Fecha:</strong>
-      </div>
-      <div class="col-md-3">
-        <strong>Stand:</strong>
-        <%= display_project_stand(project) %>
-      </div>
+      <% if project.committee_evaluation.present? %>
+        <div class="col-md-3">
+          <strong>Calificación:</strong>
+          <%= display_project_score(project) %>
+        </div>
+      <% end %>
+      <% if project.project_event_detail.present? %>
+        <div class="col-md-3">
+          <strong>Fecha:</strong>
+        </div>
+        <div class="col-md-3">
+          <strong>Stand:</strong>
+          <%= display_project_stand(project) %>
+        </div>
+      <% end %>
     </div>
     <h6 class="card-title">
-      <strong>Status</strong>
+      <strong><%= display_project_status(project) %></strong>
     </h6>
     <p class="card-text">
       <%= project_description(project) %>
