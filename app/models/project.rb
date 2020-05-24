@@ -1,6 +1,6 @@
 class Project < ApplicationRecord
-
   enum status: [:registered, :approved, :disapproved, :evaluated, :accepted, :rejected, :declined, :missed]
+  after_initialize :set_default_status, :if => :new_record?
 
   belongs_to :student
   belongs_to :professor
@@ -12,4 +12,8 @@ class Project < ApplicationRecord
   accepts_nested_attributes_for :project_detail
   has_one :social_impact
   has_one :project_event_detail
+
+  def set_default_status
+    self.status ||= :registered
+  end
 end
