@@ -28,11 +28,21 @@
     <%= render "abstracts/form_shared", form: abstract %>
   <% end %>
 
-  <h1>Datos del profesor coordinador</h1>
-  <div class="form-group col-sm-13 text-left">
-    <%= form.label :professor_id, "Nombre", :class => "form-label" %>
-    <%= form.select :professor_id, professor_options(), {}, :class => "form-control" %>
-  </div>
+  <% if !current_user.student? %>
+    <h1>Datos del estudiante responsable</h1>
+    <div class="form-group col-sm-13 text-left">
+      <%= form.label :student_id, "Nombre", :class => "form-label" %>
+      <%= form.select :student_id, student_options(), { :include_blank => true }, :class => "form-control" %>
+    </div>
+  <% end %>
+
+  <% if !current_user.professor? %>
+    <h1>Datos del profesor coordinador</h1>
+    <div class="form-group col-sm-13 text-left">
+      <%= form.label :professor_id, "Nombre", :class => "form-label" %>
+      <%= form.select :professor_id, professor_options(), { :include_blank => true }, :class => "form-control" %>
+    </div>
+  <% end %>
 
   <div class="actions">
     <%= link_to 'Cancelar', projects_path, class: 'btn btn-light' %>

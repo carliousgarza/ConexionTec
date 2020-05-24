@@ -36,7 +36,11 @@ class ProjectsController < ApplicationController
   # POST /projects.json
   def create
     @project = Project.new(project_params)
-    @project.student_id = current_user.userable.id
+    if current_user.professor?
+      @project.professor_id = current_user.userable.id
+    elsif current_user.student?
+      @project.student_id = current_user.userable.id
+    end
     @project.edition_id = current_user.edition_id
     @project.institution_id = current_user.institution_id
     respond_to do |format|
