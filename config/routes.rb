@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   resources :time_limits
   # Root
   root 'projects#index'
-  
+
   # Devise
   devise_for :users, controllers: {
     registrations: 'users/registrations',
@@ -29,4 +29,8 @@ Rails.application.routes.draw do
   resources :judges
   resources :professors
   resources :students
+
+  #select_projects
+  get "select_projects" => "projects#select_projects", :as => "select_projects"
+  post 'update_selected_projects' => 'projects#update_selected_projects', :as => "update_selected_projects"
 end

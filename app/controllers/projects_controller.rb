@@ -1,4 +1,5 @@
 class ProjectsController < ApplicationController
+  include ApplicationHelper
   before_action :set_project, only: [:show, :edit, :update, :destroy]
 
   # GET /projects
@@ -22,6 +23,24 @@ class ProjectsController < ApplicationController
 
   # GET /projects/1/edit
   def edit
+  end
+
+  # GET /select_projects
+  def select_projects
+    array = []
+    current_edition_id = get_current_edition_id()
+    
+    Project.all.each do |project|
+      if project.edition_id == current_edition_id
+        array.push(project)
+      end
+    end
+    @projects = array
+  end
+
+  # POST /update_selected_projects
+  def update_selected_projects
+
   end
 
   # POST /projects
