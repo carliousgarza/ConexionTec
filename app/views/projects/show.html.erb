@@ -1,27 +1,28 @@
-<p>
-  <strong>Status:</strong>
-  <%= @project.status %>
-</p>
+<div class="content">
+  <div class="content-show">
+    <h1>Detalles del proyecto</h1>
+    <%= render "project_details/show_shared", project_detail: @project.project_detail %>
 
-<p>
-  <strong>Student:</strong>
-  <%= @project.student_id %>
-</p>
+    <% if @project.social_impact.present? %>
+      <h1>Impacto Social</h1>
+      <%= render "social_impacts/show_shared", social_impact: @project.social_impact %>
+    <% end %>
 
-<p>
-  <strong>Professor:</strong>
-  <%= @project.professor_id %>
-</p>
+    <% if @project.abstract.present? %>
+      <h1>Abstract</h1>
+      <%= render "abstracts/show_shared", abstract: @project.abstract %>
+    <% end %>
 
-<p>
-  <strong>Institution:</strong>
-  <%= @project.institution_id %>
-</p>
+    <h1>Datos del estudiante responsable</h1>
+    <p>
+      <strong>Nombre:</strong>
+      <%= project_student(@project) %>
+    </p>
 
-<p>
-  <strong>Edition:</strong>
-  <%= @project.edition_id %>
-</p>
-
-<%= link_to 'Edit', edit_project_path(@project) %> |
-<%= link_to 'Back', projects_path %>
+    <p>
+      <strong>Correo electrónico:</strong>
+      <%= project_student_email(@project) %>
+    </p>
+  </div><br />
+  <%= link_to 'Regresar', project_status_path, :class => "btn btn-light" %>
+</div>

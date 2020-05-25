@@ -5,7 +5,15 @@ class ProjectsController < ApplicationController
   # GET /projects
   # GET /projects.json
   def index
-    @projects = Project.all
+    if current_user.professor?
+      professor_id = current_user.userable.id
+      @projects = Project.all.where(professor_id: professor_id)
+    elsif current_user.student?
+      student_id = current_user.userable.id
+      @projects = Project.all.where(student_id: student_id)
+    else
+      @projects = Project.all
+    end
   end
 
   # GET /projects/1
@@ -50,7 +58,11 @@ class ProjectsController < ApplicationController
   # POST /projects.json
   def create
     @project = Project.new(project_params)
-    @project.student_id = current_user.id
+    if current_user.professor?
+      @project.professor_id = current_user.userable.id
+    elsif current_user.student?
+      @project.student_id = current_user.userable.id
+    end
     @project.edition_id = current_user.edition_id
     @project.institution_id = current_user.institution_id
     respond_to do |format|
@@ -84,6 +96,25 @@ class ProjectsController < ApplicationController
     @project.destroy
     respond_to do |format|
       format.html { redirect_to projects_url, notice: 'Project was successfully destroyed.' }
+      format.json { head :no_content }
+    end
+  end
+
+  def project_status
+    professor_id = current_user.userable.id
+    @projects = Project.all.where(professor_id: professor_id)
+  end
+
+  def update_project_status
+    project_statuses = params[:project_statuses]
+    project_statuses.each do |project_status|
+      parts = project_status.split(':')
+      project = Project.find(parts[0])
+      status = parts[1]
+      project.update_attribute(:status, status)
+    end
+    respond_to do |format|
+      format.html { redirect_to projects_url, notice: 'Status was successfully updated.' }
       format.json { head :no_content }
     end
   end

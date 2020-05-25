@@ -1,51 +1,8 @@
-<p>
-  <strong>Name:</strong>
-  <%= @project_detail.name %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @project_detail.description %>
-</p>
-
-<p>
-  <strong>Video url:</strong>
-  <%= @project_detail.video_url %>
-</p>
-
-<p>
-  <strong>Semestre i:</strong>
-  <%= @project_detail.semestre_i %>
-</p>
-
-<p>
-  <strong>Social impact:</strong>
-  <%= @project_detail.social_impact %>
-</p>
-
-<p>
-  <strong>Client type:</strong>
-  <%= @project_detail.client_type %>
-</p>
+<%= render "project_details/show_shared", project_detail: @project_detail %>
 
 <p>
   <strong>Project:</strong>
-  <%= @project_detail.project_id %>
-</p>
-
-<p>
-  <strong>Category:</strong>
-  <%= @project_detail.category %>
-</p>
-
-<p>
-  <strong>Area:</strong>
-  <%= @project_detail.area %>
-</p>
-
-<p>
-  <strong>Type of:</strong>
-  <%= @project_detail.type_of %>
+  <%= project_detail.project_id %>
 </p>
 
 <%= link_to 'Edit', edit_project_detail_path(@project_detail) %> |

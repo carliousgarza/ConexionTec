@@ -82,6 +82,11 @@
   margin-top: 20px;
   margin-bottom: 20px;
 }
+.content-show {
+  width: 600px;
+  display: inline-block;
+  text-align: left;
+}
 .carousel-inner {
     border-radius:0 10px 10px 0;
 }
@@ -139,7 +144,6 @@ table, tr, td, th, tbody, thead, tfoot {
 .border-right {
     border-right: 1px solid black;
 }
-
 /* Registration */
 #judge-registration {
   display: none;

@@ -5,6 +5,15 @@ module ProjectsHelper
      ['Declinado', 'declined'], ['Faltó', 'missed']]
   end
 
+  def project_status_options_for_professor(project_id)
+    [['Registrado', "#{project_id}:registered"], ['Aprobado', "#{project_id}:approved"], ['No aprobado', "#{project_id}:disapproved"]]
+  end
+
+  def project_area(project)
+    project_detail = project.project_detail
+    project_detail.area
+  end
+
   def project_description(project)
     project_detail = project.project_detail
     project_detail.description
@@ -47,6 +56,11 @@ module ProjectsHelper
     student = project.student
     user = student.user
     user.email
+  end
+
+  def display_project_area(project)
+    project_detail = project.project_detail
+    display_project_detail_area(project_detail)
   end
 
   def display_project_professor_info(project)

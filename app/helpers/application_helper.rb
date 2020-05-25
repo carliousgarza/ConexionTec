@@ -6,7 +6,11 @@ module ApplicationHelper
   def major_options
     ["IRS", "ITC", "ITD"]
   end
-
+  
+  def display_boolean_value(value)
+    value ? "Sí" : "No"
+  end
+  
   def get_current_edition_id
     current_date = Date.today
     Edition.all.each do |edition|
@@ -15,7 +19,7 @@ module ApplicationHelper
       end
     end
   end
-
+  
   def get_current_edition_projects
     array = []
     current_edition_id = get_current_edition_id()
@@ -27,5 +31,4 @@ module ApplicationHelper
     end
     return array
   end
-
 end
