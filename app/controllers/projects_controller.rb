@@ -1,5 +1,6 @@
 class ProjectsController < ApplicationController
   include ApplicationHelper
+  include ProfessorsHelper
   before_action :set_project, only: [:show, :edit, :update, :destroy]
 
   # GET /projects

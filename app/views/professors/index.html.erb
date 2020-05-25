@@ -1,25 +1,49 @@
-<h1>Professors</h1>
+<div class="content">
 
-<table>
-  <thead>
-    <tr>
-      <th>Department</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+  <h1>Professors</h1>
 
-  <tbody>
-    <% @professors.each do |professor| %>
-      <tr>
-        <td><%= professor.department %></td>
-        <td><%= link_to 'Show', professor %></td>
-        <td><%= link_to 'Edit', edit_professor_path(professor) %></td>
-        <td><%= link_to 'Destroy', professor, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+  <hr>
 
-<br>
+  <div class="form-group row text-middle">
+    <div class="col-sm-2">
+      <th>Nombre</th>
+    </div>
+    <div class="col-sm-2">
+      <th>Apellido</th>
+    </div>
+    <div class="col-sm-3">
+      <th>Status</th>
+    </div>
+    <div class="col-sm-3">
+      <th>Departamento</th>
+    </div>
+    <div class="col-sm-2">
+      <th>Opciones</th>
+    </div>
+  </div>
 
-<%= link_to 'New Professor', new_professor_path %>
+  <hr>
+
+  <% @professors.each do |professor| %>
+    <div class="form-group row text-middle">
+      <div class="col-sm-2">
+        <th><%= professor_first_name(professor) %></th>
+      </div>
+      <div class="col-sm-2">
+        <th><%= professor_last_name(professor) %></th>
+      </div>
+      <div class="col-sm-3">
+        <th><%= professor_status(professor) %></th>
+      </div>
+      <div class="col-sm-3">
+        <th><%= professor.department %></th>
+      </div>
+      <div class="col-sm-2">
+        <th><%= link_to 'Show', professor %> <%= link_to 'Edit', edit_professor_path(professor) %> <%= link_to 'Destroy', professor, method: :delete, data: { confirm: 'Are you sure?' } %> </th>
+      </div>
+    </div>
+  <% end %>
+
+  <br>
+
+  <%= link_to 'New Professor', new_professor_path %>
