@@ -15,8 +15,23 @@ module ProjectDetailsHelper
     [["Departamento del Tec", "itesm_department"]]
   end
 
-  def display_project_detail_area_options(project_detail)
+  def display_project_detail_category(project_detail)
+    category = project_detail.category
+    project_detail_category_options().find { |key, value| value == category }.first
+  end
+
+  def display_project_detail_area(project_detail)
     area = project_detail.area
     project_detail_area_options().find { |key, value| value == area }.first
+  end
+
+  def display_project_detail_type_of(project_detail)
+    type_of = project_detail.type_of
+    project_detail_type_of_options().find { |key, value| value == type_of }.first
+  end
+
+  def display_project_detail_client_type(project_detail)
+    client_type = project_detail.client_type
+    project_detail_client_type_options().find { |key, value| value == client_type }.first
   end
 end

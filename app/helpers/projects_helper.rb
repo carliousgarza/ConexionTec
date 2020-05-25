@@ -60,7 +60,7 @@ module ProjectsHelper
 
   def display_project_area(project)
     project_detail = project.project_detail
-    display_project_detail_area_options(project_detail)
+    display_project_detail_area(project_detail)
   end
 
   def display_project_professor_info(project)
