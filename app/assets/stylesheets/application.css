@@ -109,6 +109,7 @@
     margin-bottom: 20px;
     margin-left: 75px;
 }
+
 table, tr, td, th, tbody, thead, tfoot {
   font-size: 12px;
   text-align: left;
@@ -123,7 +124,7 @@ table, tr, td, th, tbody, thead, tfoot {
 
 .navbar-current-user {
     text-align: center;
-    width: 160px;
+    width: 200px;
 }
 
 .navbar-expand-lg {
@@ -140,6 +141,9 @@ table, tr, td, th, tbody, thead, tfoot {
     border-radius: 5px;
 }
 
+.border-right {
+    border-right: 1px solid black;
+}
 /* Registration */
 #judge-registration {
   display: none;
