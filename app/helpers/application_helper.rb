@@ -16,4 +16,16 @@ module ApplicationHelper
     end
   end
 
+  def get_current_edition_projects
+    array = []
+    current_edition_id = get_current_edition_id()
+
+    Project.all.each do |project|
+      if project.edition_id == current_edition_id
+        array.push(project)
+      end
+    end
+    return array
+  end
+
 end

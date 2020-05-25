@@ -27,19 +27,23 @@ class ProjectsController < ApplicationController
 
   # GET /select_projects
   def select_projects
-    array = []
-    current_edition_id = get_current_edition_id()
-    
-    Project.all.each do |project|
-      if project.edition_id == current_edition_id
-        array.push(project)
-      end
-    end
+    array = get_current_edition_projects()
     @projects = array
   end
 
   # POST /update_selected_projects
   def update_selected_projects
+
+    currentProjectsArray = get_current_edition_projects()
+    selected_ids = params[:selected_projects]
+    debugger
+    currentProjectsArray.each do |project|
+      if selected_ids.include?(project.id.to_s)
+        project.update_attribute(:status, 4)
+      else
+        project.update_attribute(:status, 5)
+      end
+    end
 
   end
 

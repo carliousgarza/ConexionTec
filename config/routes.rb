@@ -32,5 +32,5 @@ Rails.application.routes.draw do
 
   #select_projects
   get "select_projects" => "projects#select_projects", :as => "select_projects"
-  post 'update_selected_projects' => 'projects#update_selected_projects', :as => "update_selected_projects"
+  post 'select_projects' => 'projects#update_selected_projects', :as => "update_selected_projects"
 end
