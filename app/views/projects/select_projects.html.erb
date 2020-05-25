@@ -1,35 +1,54 @@
 <p id="notice"><%= notice %></p>
+<div class="content">
+  <h1>Seleccionar Proyecto</h1>
+  <hr>
+  <%= form_tag select_projects_path, :method => 'post' do%>
 
-<h1>Seleccionar Proyecto</h1>
-
-<%= form_tag select_projects_path, :method => 'post' do%>
-<table>
-  <thead>
-    <tr>
+  <div class="form-group row text-middle">
+    <div class="col-sm-2">
       <th>#</th>
+    </div>
+    <div class="col-sm-2">
       <th>ID</th>
+    </div>
+    <div class="col-sm-3">
       <th>Nombre</th>
+    </div>
+    <div class="col-sm-3">
       <th>Profesor a Cargo</th>
+    </div>
+    <div class="col-sm-2">
       <th>Aprobar</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+    </div>
+  </div>
+  
+  <hr>
 
-  <tbody>
+  <div class="form-group row text-middle">
     <% counter = 0 %>
     <% @projects.each do |project| %>
       <% counter = counter + 1%>
-      <tr>
-        <td><%= counter %></td>
-        <td><%= project.id %></td>
-        <td><%= project_name(project) %></td>
-        <td><%= project_professor(project) %></td>
-        <td><%= check_box_tag 'selected_projects[]', "#{project.id}" %></td>
-      </tr>
+      <div class="col-sm-2">
+        <th><%= counter %></th>
+      </div>
+      <div class="col-sm-2">
+        <th><%= project.id %></th>
+      </div>
+      <div class="col-sm-3">
+        <th><%= project_name(project) %></th>
+      </div>
+      <div class="col-sm-3">
+        <th><%= project_professor(project) %></th>
+      </div>
+      <div class="col-sm-2">
+        <th><%= check_box_tag 'selected_projects[]', "#{project.id}" %></th>
+      </div>
+      <br/>
+      <br/>
     <% end %>
-  </tbody>
-</table>
-<%= submit_tag "Guardar", class: 'btn btn-light' %>
-
+  </div>
+  <%= submit_tag "Guardar", class: 'btn btn-light' %>
+</div>
 <br>
+
 <% end %>
