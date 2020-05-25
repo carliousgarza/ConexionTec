@@ -36,7 +36,6 @@ class ProjectsController < ApplicationController
 
     currentProjectsArray = get_current_edition_projects()
     selected_ids = params[:selected_projects]
-    debugger
     currentProjectsArray.each do |project|
       if selected_ids.include?(project.id.to_s)
         project.update_attribute(:status, 4)
