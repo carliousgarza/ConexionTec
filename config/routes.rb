@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   resources :time_limits
   # Root
   root 'projects#index'
-  
+
   # Devise
   devise_for :users, controllers: {
     registrations: 'users/registrations',
@@ -29,4 +29,8 @@ Rails.application.routes.draw do
   resources :judges
   resources :professors
   resources :students
+
+  # Change status
+  get "project_status" => "projects#project_status", :as => "project_status"
+  post 'update_project_status' => 'projects#update_project_status', :as => "update_project_status"
 end

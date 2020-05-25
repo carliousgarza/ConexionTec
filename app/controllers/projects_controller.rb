@@ -78,6 +78,25 @@ class ProjectsController < ApplicationController
     end
   end
 
+  def project_status
+    professor_id = current_user.userable.id
+    @projects = Project.all.where(professor_id: professor_id)
+  end
+
+  def update_project_status
+    project_statuses = params[:project_statuses]
+    project_statuses.each do |project_status|
+      parts = project_status.split(':')
+      project = Project.find(parts[0])
+      status = parts[1]
+      project.update_attribute(:status, status)
+    end
+    respond_to do |format|
+      format.html { redirect_to projects_url, notice: 'Status was successfully updated.' }
+      format.json { head :no_content }
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_project

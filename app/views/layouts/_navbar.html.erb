@@ -2,7 +2,7 @@
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-  
+
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
             <a class="nav-item nav-link" href="/projects">Proyectos <span class="sr-only">(current)</span></a>
@@ -10,15 +10,16 @@
             <a class="nav-item nav-link" href="/professors">Profesores</a>
             <a class="nav-item nav-link" href="/editions">Edicion</a>
             <a class="nav-item nav-link" href="/judge_evaluations">Evaluaciones</a>
-            
+            <a class="nav-item nav-link" href="/project_status">Estatus de proyectos</a>
+
             <div class="navbar-current-user" style="position:absolute; right:0px;">
                 <strong>
                     <%= link_to current_user.first_name, edit_user_path(current_user), :class => 'navbar-link'%>
-                </strong>  
+                </strong>
                 <%= link_to "Cuenta", edit_user_registration_path, :class => 'navbar-link' %> |
                 <%= link_to "Salir", destroy_user_session_path, method: :delete, :class => 'navbar-link'%>
-            </div> 
-  
+            </div>
+
         </div>
-    </div>    
+    </div>
 </nav>
