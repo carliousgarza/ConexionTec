@@ -1,4 +1,5 @@
 class ProjectsController < ApplicationController
+  include ApplicationHelper
   before_action :set_project, only: [:show, :edit, :update, :destroy]
 
   # GET /projects
@@ -22,6 +23,27 @@ class ProjectsController < ApplicationController
 
   # GET /projects/1/edit
   def edit
+  end
+
+  # GET /select_projects
+  def select_projects
+    array = get_current_edition_projects()
+    @projects = array
+  end
+
+  # POST /update_selected_projects
+  def update_selected_projects
+
+    currentProjectsArray = get_current_edition_projects()
+    selected_ids = params[:selected_projects]
+    currentProjectsArray.each do |project|
+      if selected_ids.include?(project.id.to_s)
+        project.update_attribute(:status, 4)
+      else
+        project.update_attribute(:status, 5)
+      end
+    end
+
   end
 
   # POST /projects
