@@ -10,9 +10,15 @@ module ProjectsHelper
   end
 
   def project_status_options_for_admin(project_id)
-    [['Registrado', "#{project_id}:registered"], ['Aprobado', "#{project_id}:approved"], ['No aprobado', "#{project_id}:disapproved"], ['Evaluado', "#{project_id}:evaluated"], ['Aceptado', "#{project_id}:accepted"], ['Rechazado', "#{project_id}:rejected"], ['Declinado', "#{project_id}:declined"], ['Faltó', "#{project_id}:missed"]]
+    [['Registrado', "#{project_id}:registered"], ['Aprobado', "#{project_id}:approved"], 
+    ['No aprobado', "#{project_id}:disapproved"], ['Evaluado', "#{project_id}:evaluated"], 
+    ['Aceptado', "#{project_id}:accepted"], ['Rechazado', "#{project_id}:rejected"], 
+    ['Declinado', "#{project_id}:declined"], ['Faltó', "#{project_id}:missed"]]
   end
 
+  def project_status_options_for_operative(project_id)
+    [['Aceptado', 'accepted'], ['Faltó', "#{project_id}:missed"]]
+  end
 
 
   def project_area(project)
