@@ -15,7 +15,11 @@
           <tr>
             <td><%= project_name(project) %></td>
             <td><%= display_project_area(project) %></td>
-            <td><%= select_tag 'project_statuses[]', options_for_select(project_status_options_for_professor(project.id)) %></td>
+            <% if current_user.professor? %>
+              <td><%= select_tag 'project_statuses[]', options_for_select(project_status_options_for_professor(project.id)) %></td>
+            <% else %>
+              <td><%= select_tag 'project_statuses[]', options_for_select(project_status_options_for_admin(project.id)) %></td>
+            <% end %>
             <td><%= link_to 'Ver', project %></td>
           </tr>
         <% end %>
