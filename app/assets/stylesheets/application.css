@@ -64,6 +64,7 @@
   margin-bottom: 20px;
 }
 .container {
+    margin-top: 80px;
     background:#fff;
     border-radius: 10px;
     box-shadow:15px 20px 0px rgba(0,0,0,0.1);
@@ -144,6 +145,12 @@ table, tr, td, th, tbody, thead, tfoot {
 .border-right {
     border-right: 1px solid black;
 }
+
+.evaluation {
+  margin-top: 40px;
+  padding-left: 260px;
+}
+
 /* Registration */
 #judge-registration {
   display: none;
