@@ -19,4 +19,8 @@ class Project < ApplicationRecord
   def set_default_status
     self.status ||= :registered
   end
+
+  def accepted?
+    self.status == "accepted"
+  end
 end
