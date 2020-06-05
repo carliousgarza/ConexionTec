@@ -1,27 +1,40 @@
-<p>
-  <strong>Company:</strong>
-  <%= @judge.company %>
-</p>
+<div class="card mx-auto" style="width: 68rem;">
+  <h5 class="card-header">
+  <%= @judge.user.full_name %>
+  </h5>
 
-<p>
-  <strong>Department:</strong>
-  <%= @judge.department %>
-</p>
+  <div class="card-body">
+    <p>
+      <strong>Correo electrónico:</strong>
+      <%= @judge.user.email %>
+    </p>
 
-<p>
-  <strong>Contact name:</strong>
-  <%= @judge.contact_name %>
-</p>
+    <p>
+      <strong>Compañia:</strong>
+      <%= @judge.company %>
+    </p>
 
-<p>
-  <strong>Contact email:</strong>
-  <%= @judge.contact_email %>
-</p>
+    <p>
+      <strong>Departamento:</strong>
+      <%= @judge.department %>
+    </p>
 
-<p>
-  <strong>Has tablet:</strong>
-  <%= @judge.has_tablet %>
-</p>
+    <p>
+      <strong>Nombre contacto:</strong>
+      <%= @judge.contact_name %>
+    </p>
 
-<%= link_to 'Edit', edit_judge_path(@judge) %> |
-<%= link_to 'Back', judges_path %>
+    <p>
+      <strong>Correo electrónico de contacto:</strong>
+      <%= @judge.contact_email %>
+    </p>
+
+    <p>
+      <strong>Tiene tableta:</strong>
+      <%= display_boolean_value(@judge.has_tablet) %>
+    </p>
+
+    <%= link_to 'Editar', edit_judge_path(@judge) ,:class => "btn btn-light" %> |
+    <%= link_to 'Regresar', judges_path ,:class => "btn btn-light" %>
+  </div>
+</div>

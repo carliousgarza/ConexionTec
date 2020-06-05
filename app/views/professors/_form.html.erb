@@ -11,12 +11,16 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :department %>
-    <%= form.text_field :department %>
-  </div>
+  <div class="mx-auto" style="width: 30%; overflow: hidden;">
+    <br />
+    <div class="col-sm-15">
+      <%= form.label :department, "Departmanto", :class => "form-label" %>
+      <%= form.text_field :department, :class => "form-control" %>
+    </div>
 
-  <div class="actions">
-    <%= form.submit %>
+    <br />
+    <div class="actions">
+      <%= form.submit "Guardar", :class => "btn btn-light" %>
+    </div>
   </div>
 <% end %>
