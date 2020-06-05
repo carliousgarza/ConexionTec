@@ -12,32 +12,27 @@
   <% end %>
 
  <br />
- 
-<div style="width: 100%; overflow: hidden;">
+
+<div style="width: 100%; overflow: hidden; align-items: center; display: flex;">
   <div style="width: 600px; float: left; margin-left: 100px">
-      
       <div class="col-sm-9">
         <%= form.label :name ,"Nombre de la edición", :class => "form-label" %>
         <%= form.text_field :name, :class => "form-control" %>
       </div>
-
       <br />
-
       <div class="col-sm-9">
-        <%= form.label :start_date , "Fecha de inicio", :class => "form-label" %> 
+        <%= form.label :start_date , "Fecha de inicio", :class => "form-label" %>
         <%= form.date_select :start_date %>
       </div>
-
       <br />
-
       <div class="col-sm-9">
         <%= form.label :end_date , "Fecha de termino", :class => "form-label"  %>
         <%= form.date_select :end_date %>
       </div>
-    
   </div>
-  <div style=" width: 600px; margin-left: 800px;">
-    <%= form.fields_for :time_limit do |time_limit| %>
+  <hr>
+  <div style="width: 600px;">
+    <%= form.fields_for :time_limits do |time_limit| %>
       <%= render "time_limits/form_shared", form: time_limit %>
     <% end %>
   </div>
