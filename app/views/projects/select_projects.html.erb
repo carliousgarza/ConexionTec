@@ -17,11 +17,14 @@
     <div class="col-sm-3">
       <th>Profesor a Cargo</th>
     </div>
-    <div class="col-sm-2">
+    <div class="col-sm-1">
+      <th>Calificación</th>
+    </div>
+    <div class="col-sm-1">
       <th>Aprobar</th>
     </div>
   </div>
-  
+
   <hr>
 
   <div class="form-group row text-middle">
@@ -40,7 +43,10 @@
       <div class="col-sm-3">
         <th><%= project_professor(project) %></th>
       </div>
-      <div class="col-sm-2">
+      <div class="col-sm-1">
+        <th><%= project.committee_evaluation.score %></th>
+      </div>
+      <div class="col-sm-1">
         <th><%= check_box_tag 'selected_projects[]', "#{project.id}" %></th>
       </div>
       <br/>
