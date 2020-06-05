@@ -1,9 +1,6 @@
 <div class="content">
   <h1>Proyectos</h1>
-  <div class="content-actions">
-    <%= link_to 'Nuevo proyecto', new_project_path, :class => "btn btn-light" %>
-  </div>
-
+  <br />
   <div class="row">
     <div class="col-md-3">
       <div class="list-group">
@@ -16,5 +13,8 @@
         <%= render "projects/project_card", project: project %>
       <% end %>
     </div>
+  </div>
+  <div class="content-actions">
+    <%= link_to 'Nuevo proyecto', new_project_path, :class => "btn btn-light" %>
   </div>
 </div>

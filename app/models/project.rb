@@ -8,12 +8,13 @@ class Project < ApplicationRecord
   belongs_to :edition
   has_one :abstract
   accepts_nested_attributes_for :abstract
-  has_one :committee_evaluation
+  has_one :committee_evaluation, dependent: :destroy
   has_one :project_detail
   accepts_nested_attributes_for :project_detail
   has_one :social_impact
   accepts_nested_attributes_for :social_impact
   has_one :project_event_detail
+  has_many :judge_evaluations
 
   def set_default_status
     self.status ||= :registered
