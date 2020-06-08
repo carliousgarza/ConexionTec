@@ -9,7 +9,7 @@
 # Edition
 name = "Feb-Jun 2020"
 start_date = Date.new(2020, 2, 1)
-end_date = Date.new(2020, 6, 1)
+end_date = Date.new(2020, 6, 30)
 Edition.create(name: name, start_date: start_date, end_date: end_date)
 
 # Institution

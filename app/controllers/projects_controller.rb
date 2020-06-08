@@ -101,8 +101,12 @@ class ProjectsController < ApplicationController
   end
 
   def project_status
-    professor_id = current_user.userable.id
-    @projects = Project.all.where(professor_id: professor_id)
+    if current_user.professor?
+      professor_id = current_user.userable.id
+      @projects = Project.all.where(professor_id: professor_id)
+    else
+      @projects = Project.all
+    end
   end
 
   def update_project_status
