@@ -41,7 +41,7 @@ $ git clone https://github.com/carliousgarza/ConexionTec.git
 ```bash
 $ cd ConexionTec
 ```
-4. Correr los siguientes comandos:
+4. Corre los siguientes comandos:
 ```bash
 $ gem install bundler
 $ bundle install
