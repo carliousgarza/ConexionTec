@@ -24,5 +24,9 @@
       <%= project_student_email(@project) %>
     </p>
   </div><br />
-  <%= link_to 'Regresar', project_status_path, :class => "btn btn-light" %>
+  <% if current_user.committee_member? || current_user.administrator? %>
+    <%= link_to 'Estatus', project_status_path, :class => "btn btn-light" %>
+  <% else %>
+    <%= link_to 'Proyectos', projects_path, :class => "btn btn-light" %>
+  <% end %>
 </div>
