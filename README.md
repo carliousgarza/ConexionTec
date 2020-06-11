@@ -18,6 +18,9 @@ Página web para administrar el registro y evento de Conexión Tec.
 
 ### Setup
 Instala las siguientes herramientas de desarrollo:
+- [Node](https://nodejs.org/es/download/)
+- [Npm](https://www.npmjs.com/get-npm)
+- [Yarn](https://classic.yarnpkg.com/en/docs/install/#mac-stable)
 - [Git](https://git-scm.com/downloads)
 - [Ruby on Rails](https://guides.rubyonrails.org/v6.0/getting_started.html)
 
@@ -38,16 +41,16 @@ $ git clone https://github.com/carliousgarza/ConexionTec.git
 ```bash
 $ cd ConexionTec
 ```
-4. Crea la base de datos:
+4. Correr los siguientes comandos:
+```bash
+$ gem install bundler
+$ bundle install
+$ yarn install
+```
+5. Crear la base de datos:
 ```bash
 $ rails db:create
-```
-5. Corre las migraciones:
-```bash
 $ rails db:migrate
-```
-6. Corre el siguiente comando para agregar datos:
-```bash
 $ rails db:seed
 ```
 7. Corre la aplicación de manera local:
