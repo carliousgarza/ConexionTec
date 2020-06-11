@@ -41,6 +41,7 @@
     </p>
 
     <td><%= link_to 'Editar', edit_project_path(project), :class => "btn btn-light" %></td>
+    <td><%= link_to 'Ver', project_path(project), :class => "btn btn-light" %></td>
 
     <% if current_user.administrator? || current_user.committee_member? %>
       <% if project.committee_evaluation.present? %>

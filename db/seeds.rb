@@ -21,6 +21,9 @@ Institution.create(name: name, city: city)
 department = "Ingeniería y Ciencias"
 Professor.create(department: department)
 
+# Admin
+Administrator.create()
+
 # User
 email = "luis@tec.mx"
 password = "123123"
@@ -28,6 +31,16 @@ first_name = "Luis"
 last_name = "Gonzalez"
 userable_id = 1
 userable_type = "Professor"
+edition_id = 1
+institution_id = 1
+User.create(email: email, password: password, first_name: first_name, last_name: last_name, userable_id: userable_id, userable_type: userable_type, edition_id: edition_id, institution_id: institution_id)
+
+email = "juan@tec.mx"
+password = "123123"
+first_name = "Juan"
+last_name = "Hinojosa"
+userable_id = 1
+userable_type = "Administrator"
 edition_id = 1
 institution_id = 1
 User.create(email: email, password: password, first_name: first_name, last_name: last_name, userable_id: userable_id, userable_type: userable_type, edition_id: edition_id, institution_id: institution_id)

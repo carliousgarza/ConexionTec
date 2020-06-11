@@ -33,38 +33,17 @@ class ProjectsController < ApplicationController
   def edit
   end
 
-  # GET /select_projects
-  def select_projects
-    array = get_current_edition_projects()
-    @projects = array
-  end
-
-  # POST /update_selected_projects
-  def update_selected_projects
-
-    currentProjectsArray = get_current_edition_projects()
-    selected_ids = params[:selected_projects]
-    currentProjectsArray.each do |project|
-      if selected_ids.include?(project.id.to_s)
-        project.update_attribute(:status, 4)
-      else
-        project.update_attribute(:status, 5)
-      end
-    end
-
-  end
-
   # POST /projects
   # POST /projects.json
   def create
     @project = Project.new(project_params)
+    @project.edition_id = current_user.edition_id
+    @project.institution_id = current_user.institution_id
     if current_user.professor?
       @project.professor_id = current_user.userable.id
     elsif current_user.student?
       @project.student_id = current_user.userable.id
     end
-    @project.edition_id = current_user.edition_id
-    @project.institution_id = current_user.institution_id
     respond_to do |format|
       if @project.save
         format.html { redirect_to @project, notice: 'Project was successfully created.' }
@@ -100,6 +79,25 @@ class ProjectsController < ApplicationController
     end
   end
 
+  # GET /select_projects
+  def select_projects
+    current_projects = get_current_edition_projects()
+    @projects = current_projects
+  end
+
+  # POST /update_selected_projects
+  def update_selected_projects
+    current_projects = get_current_edition_projects()
+    selected_ids = params[:selected_projects]
+    current_projects.each do |project|
+      if selected_ids.include?(project.id.to_s)
+        project.update_attribute(:status, 4)
+      else
+        project.update_attribute(:status, 5)
+      end
+    end
+  end
+
   def project_status
     if current_user.professor?
       professor_id = current_user.userable.id
@@ -131,24 +129,30 @@ class ProjectsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def project_params
-      params.require(:project).permit(:status, :student_id, :professor_id, :institution_id, :edition_id, :project_detail_attributes => project_detail_params(), :social_impact_attributes => social_impact_params(), :abstract_attributes => abstract_params())
+      params.require(:project).permit(:status, :student_id, :professor_id, :institution_id, :edition_id,
+                                      project_detail_attributes: project_detail_attributes,
+                                      social_impact_attributes: social_impact_attributes,
+                                      abstract_attributes: abstract_attributes)
     end
 
-    def project_detail_params
+    def project_detail_attributes
       params = project_detail_keys()
       params << :id
+      params << :_destroy
       return params
     end
 
-    def social_impact_params
+    def social_impact_attributes
       params = social_impact_keys()
       params << :id
+      params << :_destroy
       return params
     end
 
-    def abstract_params
+    def abstract_attributes
       params = abstract_keys()
       params << :id
+      params << :_destroy
       return params
     end
 end
