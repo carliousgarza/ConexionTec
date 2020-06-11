@@ -33,38 +33,17 @@ class ProjectsController < ApplicationController
   def edit
   end
 
-  # GET /select_projects
-  def select_projects
-    array = get_current_edition_projects()
-    @projects = array
-  end
-
-  # POST /update_selected_projects
-  def update_selected_projects
-
-    currentProjectsArray = get_current_edition_projects()
-    selected_ids = params[:selected_projects]
-    currentProjectsArray.each do |project|
-      if selected_ids.include?(project.id.to_s)
-        project.update_attribute(:status, 4)
-      else
-        project.update_attribute(:status, 5)
-      end
-    end
-
-  end
-
   # POST /projects
   # POST /projects.json
   def create
     @project = Project.new(project_params)
+    @project.edition_id = current_user.edition_id
+    @project.institution_id = current_user.institution_id
     if current_user.professor?
       @project.professor_id = current_user.userable.id
     elsif current_user.student?
       @project.student_id = current_user.userable.id
     end
-    @project.edition_id = current_user.edition_id
-    @project.institution_id = current_user.institution_id
     respond_to do |format|
       if @project.save
         format.html { redirect_to @project, notice: 'Project was successfully created.' }
@@ -97,6 +76,25 @@ class ProjectsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to projects_url, notice: 'Project was successfully destroyed.' }
       format.json { head :no_content }
+    end
+  end
+
+  # GET /select_projects
+  def select_projects
+    current_projects = get_current_edition_projects()
+    @projects = current_projects
+  end
+
+  # POST /update_selected_projects
+  def update_selected_projects
+    current_projects = get_current_edition_projects()
+    selected_ids = params[:selected_projects]
+    current_projects.each do |project|
+      if selected_ids.include?(project.id.to_s)
+        project.update_attribute(:status, 4)
+      else
+        project.update_attribute(:status, 5)
+      end
     end
   end
 

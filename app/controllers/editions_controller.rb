@@ -77,7 +77,6 @@ class EditionsController < ApplicationController
       params.require(:edition).permit(:name, :start_date, :end_date, time_limits_attributes: time_limits_attributes)
     end
 
-    # Only allow a list of trusted parameters through.
     def time_limits_attributes
       params = time_limit_keys()
       params << :id
