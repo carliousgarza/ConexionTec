@@ -6,15 +6,16 @@ class Project < ApplicationRecord
   belongs_to :professor
   belongs_to :institution
   belongs_to :edition
-  has_one :abstract
-  accepts_nested_attributes_for :abstract
-  has_one :committee_evaluation, dependent: :destroy
-  has_one :project_detail
-  accepts_nested_attributes_for :project_detail
-  has_one :social_impact
-  accepts_nested_attributes_for :social_impact
   has_one :project_event_detail
+  has_one :committee_evaluation
   has_many :judge_evaluations
+
+  has_one :abstract, dependent: :destroy
+  accepts_nested_attributes_for :abstract, allow_destroy: true
+  has_one :project_detail, dependent: :destroy
+  accepts_nested_attributes_for :project_detail, allow_destroy: true
+  has_one :social_impact, dependent: :destroy
+  accepts_nested_attributes_for :social_impact, allow_destroy: true
 
   def set_default_status
     self.status ||= :registered
