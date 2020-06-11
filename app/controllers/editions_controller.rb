@@ -15,7 +15,11 @@ class EditionsController < ApplicationController
   # GET /editions/new
   def new
     @edition = Edition.new
-    @edition.time_limits.build
+    @edition.time_limits.build(phase_name: "Inicio")
+    @edition.time_limits.build(phase_name: "Planeación")
+    @edition.time_limits.build(phase_name: "Evento")
+    @edition.time_limits.build(phase_name: "Cierre")
+    @edition.time_limits.build(phase_name: "Post Evento")
   end
 
   # GET /editions/1/edit
