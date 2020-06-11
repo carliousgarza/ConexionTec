@@ -47,13 +47,13 @@ $ gem install bundler
 $ bundle install
 $ yarn install
 ```
-5. Crear la base de datos:
+5. Crear y poblar la base de datos:
 ```bash
 $ rails db:create
 $ rails db:migrate
 $ rails db:seed
 ```
-7. Corre la aplicación de manera local:
+6. Corre la aplicación de manera local:
 ```bash
 $ rails server
 ```
